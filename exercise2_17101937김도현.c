@@ -1,34 +1,29 @@
-#pragma warning(disable:4996)
-#include<stdio.h>
-#define stop '/'
-
-void input(char, unsigned int, unsigned int);
+#include <stdio.h>
 
 int main(void)
 {
-	char ch;
-	int i, j;
+	int arr[] = { 30, 42, 187, 19, 111 };
+	int n = sizeof(arr) / sizeof(arr[0]);
 
-	printf("Enter a char and two ints (/ to quit): ");
+	printf("Values in array : ");
 
-	while ((scanf("%c %d %d", &ch, &i, &j) == 3) && (getchar != stop)) {
-		input(ch, i, j);
-		printf("\n");
+	for (int index = 0; index < n; index++)
+		printf("%d ", arr[index]);
 
-		printf("Enter a char and two ints (/ to quit): ");
-	}
+	printf("\nLargest value of array is %d\n", largest(arr,n));
 
 	return 0;
 }
 
-void input(char ch, unsigned int i, unsigned int j)
+int largest(int arr[], int n)
 {
-	for (int rows = 0; rows < j; rows++)
-	{
-		for (int columns = 0; columns < i; columns++)
-		{
-			putchar(ch);
-		}
-		putchar('\n');
+	int index;
+	int max = arr[0];
+
+	for (index = 1; index < n; index++) {
+		if (arr[index] > max)
+			max = arr[index];
 	}
+
+	return max;
 }
